@@ -1,7 +1,86 @@
-{% extends 'accounts/base.html' %}
+{% extends "accounts/base.html" %}
 
-{% block content %}
-  <h2>Log in to My Site</h2>
+{% load staticfiles %}
+
+{% block content1 %}
+<div class="New-VDG-register-page-main">
+      <div class="col-lg-6 col-lg-offset-3">
+          <div class="new-sub-content-VDG">
+          
+            <div class="New-button-of-login-pages-VDG">
+              <div class="New-VDG-login-button New-VDG-button-new-design new-VDG-active-btn">
+                <a href="javascript:void(0)" class="new-VDG-login-btn">Login</a>
+              </div>
+              <div class="New-VDG-register-button New-VDG-button-new-design">
+                <a href="{% url 'signup' %}" class="new-VDG-login-btn">Register</a>
+              </div>
+            </div>
+          
+            <div class="New-login-page-design-global new-register-div">
+              <div class="New-login-welcome-text login-account-new-text">Login</div>
+              <div class="New-login-account-text login-account-new-text">Login to your account.</div>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                   <li> {{ message }}</li>
+                {% endfor %}
+            {% endif %}
+          <form action="{% url 'user_login' %}" method="post" class="New-VDG-account-details-of-form">
+            {% csrf_token %}
+          <div class="row">
+          <div class="col-lg-12 New-VDG-account-form-section-toppadding">
+            <div class="form-group form-sub-main ">
+              <img src="{% static 'images/mail.png' %}" class="sub-icon-img "/>
+              <input type="text" class="form-control sub-txt" name="username" id="username" placeholder="Email">
+              </div>    
+              <div class="form-group form-sub-main">
+                <img src="{% static 'images/lock.png' %}" class="sub-icon-img lock-icon-img "/>
+                <input type="password" class="form-control sub-txt sub-hide-pwd" name="password" id="pwd" placeholder="Password">
+              </div>
+                <div class="checkbox login-form-sub-main-chk">
+                  <label><input data-val="true" data-val-required="'Remember Me' must not be empty." id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">Remember me</label>
+                </div>
+              <div class="login-capcha-image-refresh">
+                                            
+                <div class="login-capcha-image">
+                    <img class="img-responsive" src="{% static 'images/captcha.png' %}" title="Captcha">
+                </div>
+                <div class="login-capcha-refresh">
+                   <div class="refresh-login-img margin-login-capcha"> <img class="img-responsive" src="{% static 'images/recaptcha.png' %}" ></div>
+                    <div class="form-group form-sub-main capta-textbox">
+                      <input autocomplete="off" autofocus="autofocus" class="form-control sub-txt" id="CaptchaValue" name="CaptchaValue" placeholder="Type the number displayed above" type="text">
+                                                    
+                    </div>
+                </div>
+              </div>
+    
+    
+              <div class="new-VDG-registeration-btn-for-main">
+                <button type="submit" class="gradient-btn New-VDG-gradient-login-button">Login</button>
+                                
+              </div>
+              <div class="forgot-pwd"><a href="{% url 'password_reset' %}" class="forgot-pwd-link">Forgot password?</a></div>
+    
+            </div>
+          
+            </div>
+          </form>
+                    
+      </div>
+      </div> 
+    </div>     
+    {% include 'accounts/footer.html' %}
+
+{% endblock %}
+    
+
+
+
+
+
+
+
+<!---<h2>Log in to My Site</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
@@ -15,4 +94,4 @@
 <input type="submit" name="" value="Login">
 </form>
 <a href="{%url 'password_reset' %}">Forgot Password?</a>
-{% endblock %}
+-->

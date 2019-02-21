@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Developer Design</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link href="css/style.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/style-responsive.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!--  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css">
+
+
+
+   </head>
+   <body>
+   	   <!-- <div class="fixed-footer"> -->
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#"><img src="images/footer-logo.png" class="img-responsive"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <li ><a href="credentials.html">Credentials</a></li>
+                  <li><a href="doc.html">Doc</a></li>
+                  <li><a href="mydocument.html">My Documents</a></li>
+                  <li><a href="changepassword.html">Change Password</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Logout</a></li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container-fluid -->
+      </nav>
+      <div class="container">
+ <div class="all-files-main">  
+
+<section id="" class="passport-banner-main passport-main">
+
+
+
+
+<div class="container-remove">
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade" data-aos-once="true">
+                        <h2 class="border">My Documents</h2>
+                    </div>
+
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <div class="input-group search-multiple" id="adv-search">
+                            <div class="icon-addon addon-lg" id="IconId">
+                                <input class="form-control" id="email" name="DocumentName" placeholder="Search" readonly="readonly" type="text" value="">
+                                <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+                            </div>
+
+                            <div class="input-group-btn">
+                                <div class="btn-group" role="group">
+                                    <div class="dropdown dropdown-lg">
+                                        <button type="button" class="btn btn-default dropdown-toggle" aria-expanded="true" id="btnDropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu" id="dropDownId">
+                                            <form class="form-horizontal" role="form" method="post" novalidate="novalidate">
+                                                <div class="form-group ddl-type">
+                                                    <label for="Type">Type</label>
+                                                    <select class="form-control select-type" id="DocumentType" name="DocumentType"><option value="0">All</option>
+<option value="2003">Employee Verification</option>
+<option value="2002">In2Work Reference</option>
+<option value="2008">Resume</option>
+</select>
+                                                </div>
+                                                <div class="form-group ddl-type">
+                                                    <label for="DateCreated">DateCreated</label>
+                                                    <input class="select-type input-date-picker hasDatepicker" id="datepicker" name="SearchByDate" placeholder="DD/MM/YYYY" readonly="readonly" type="text" value="">
+                                                   <!--  <input type="text" class="datepicker"> -->
+                                                </div>
+                                                <input type="submit" class="btn btn-go button-list-search" value="Search">
+                                                <input type="button" class="btn btn-go button-list-search" value="Clear" id="clearButton" onclick="ClearFilter()">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+ <script>
+
+
+    function ClearFilter() {
+        $('#DocumentType').val("0");
+        $("#datepicker").val(null);
+        window.location.href = "/Mainnet/List";
+    }
+    $('#IconId').click(function () {
+        if ($('#dropDownId').css('display') == 'none')
+            $("#dropDownId").css("display", "block");
+        else
+            $("#dropDownId").css("display", "none");
+    });
+    $("#btnDropdown").click(function () {
+        if ($('#dropDownId').css('display') == 'none')
+            $("#dropDownId").css("display", "block");
+        else
+            $("#dropDownId").css("display", "none");
+    });
+
+    function onviewer(pdfurl) {
+        $('#myModal').modal('show');
+        $('div[class^="modal-backdrop in"]').remove();
+        $('#previewdoc').attr('src', pdfurl)
+    }
+
+</script>
+ <script>
+ 	$(function(){
+    $('#datepicker').datepicker({
+        format: 'mm-dd-yyyy',
+        endDate: '+0d',
+        autoclose: true
+    });
+});
+	// var dateToday = new Date();
+	// $(function () {
+
+	// 	$("#datepicker").datepicker({
+	// 		dateFormat: 'dd/mm/yy',
+	// 		maxDate: 0
+
+	// 	});
+	// });
+</script>   
+
+
+
+
+
+
+<div class="templete-list-tables">
+                    <table class="table" id="mytable">
+                        <thead class="cf">
+                            <tr>
+                                <th  style="width: 20%;" hidden=""><label for="BitcoinId">BitcoinId</label></th>
+                                <th  style="width: 20%;" hidden=""><label for="Sent_tries">Sent_tries</label></th>
+                                <th style="width: 20%;"><label for="type">type</label></th>
+                                <th  style="width: 16%"> <label for="Document_name">Document name</label></th>
+                                <th  style="width: 30%;"><label for="Document_Hash">Document Hash</label></th>
+                                <th style="width: 12%"><label for="Date_created">Date created</label></th>
+                                <th style="width: 4%"><label for="Status">Status</label></th>
+                                <th  style="width: 18%"><label for="Action">Action</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                               
+                                <tr>
+
+                                    <td data-label="Type"> Employee Verification</td>
+                                    <td data-label="Document Name">Test</td>
+                                    <td data-label="Hash" class="break-content">251F8E37C13D5EF37D78FC3911B4B3026EC3EE342BB8E4C27CD9</td>
+                                    <td data-label="Date Created">06/09/2018</td>
+                                    <td data-label="BitcoinId" hidden="" style="display:none;">2</td>
+                                    <td data-label="Sent_tries" hidden="" style="display:none;">1</td>
+                                    <td data-label="RequestDataId" hidden="" style="display:none;" id="req-guid">2</td>
+                                    <td data-label="RequestDataPublicGuid" hidden="" style="display:none;" id="req-guid">25fa86b4-9d02-4778-9a65-edad31e0d383</td>
+                                        <td data-label="Status"><a href="javascript:void(0);" onclick="CheckStatus('2')" class="status-icon-verify-loder" title="Verified in blockchain" style="color:#3ba15f;"><i class="fa fa-check"></i></a></td>
+                                    <td data-label="Action" class="clearfix">
+                                            <span class="three-icon">
+                                                <a onclick="onviewer('https://drive.google.com/a/tristonsoft.com/file/d/1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs/preview');" title="Preview">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input id="download" name="DownloadUrl" type="hidden" value="https://veridocglobaldocuments.blob.core.windows.net/veridocglobal/documents/qrpdf/25fa86b4-9d02-4778-9a65-edad31e0d383.pdf">
+                                                </a>
+                                                <a href="javascript:void(0);" title="Download" target="_blank">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+
+                                                
+                                                
+
+
+                                                <a href="javascript:void(0);"  title="Email">
+                                                    <i class="fa fa-envelope"></i>
+                                                </a>
+
+
+
+                                                <a href="javascript:void(0);" title="Delete" onclick="return confirm('Are you sure you want to delete?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </span>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td data-label="Type"> Employee Verification</td>
+                                    <td data-label="Document Name">Test</td>
+                                    <td data-label="Hash" class="break-content">251F8E37C13D5EF37D78FC3911B4B3026EA098BD81CED8C3EE342BB8E4C27CD9</td>
+                                    <td data-label="Date Created">06/09/2018</td>
+                                    <td data-label="BitcoinId" hidden="" style="display:none;">2</td>
+                                    <td data-label="Sent_tries" hidden="" style="display:none;">1</td>
+                                    <td data-label="RequestDataId" hidden="" style="display:none;" id="req-guid">2</td>
+                                    <td data-label="RequestDataPublicGuid" hidden="" style="display:none;" id="req-guid">25fa86b4-9d02-4778-9a65-edad31e0d383</td>
+                                        <td data-label="Status"><a href="javascript:void(0);"  class="status-icon-verify-loder" title="Verified in blockchain" style="color:#3ba15f;"><i class="fa fa-check"></i></a></td>
+                                    <td data-label="Action" class="clearfix">
+                                            <span class="three-icon">
+                                                <a onclick="onviewer('https://drive.google.com/a/tristonsoft.com/file/d/1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs/preview');" title="Preview">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input id="download" name="DownloadUrl" type="hidden" value="https://veridocglobaldocuments.blob.core.windows.net/veridocglobal/documents/qrpdf/25fa86b4-9d02-4778-9a65-edad31e0d383.pdf">
+                                                </a>
+                                                <a href="/Mainnet/DownloadPdf?googleDriveUrl=https%3A%2F%2Fdrive.google.com%2Fa%2Ftristonsoft.com%2Ffile%2Fd%2F1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs%2Fpreview" title="Download" target="_blank">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+
+                                                
+                                                
+
+
+                                                <a href="javascript:void(0);" onclick="onsendemail('25fa86b4-9d02-4778-9a65-edad31e0d383');" title="Email">
+                                                    <i class="fa fa-envelope"></i>
+                                                </a>
+
+
+
+                                                <a href="/Mainnet/DeleteList?requestpublicguid=25fa86b4-9d02-4778-9a65-edad31e0d383" title="Delete" onclick="return confirm('Are you sure you want to delete?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </span>
+                                    </td>
+                                </tr>
+                                  <tr>
+
+                                    <td data-label="Type"> Employee Verification</td>
+                                    <td data-label="Document Name">Test</td>
+                                    <td data-label="Hash" class="break-content">251F8E37C13D5EF37D78FC3911B4B3026EA098BD81CED8C3EE342BB8E4C27CD9</td>
+                                    <td data-label="Date Created">06/09/2018</td>
+                                    <td data-label="BitcoinId" hidden="" style="display:none;">2</td>
+                                    <td data-label="Sent_tries" hidden="" style="display:none;">1</td>
+                                    <td data-label="RequestDataId" hidden="" style="display:none;" id="req-guid">2</td>
+                                    <td data-label="RequestDataPublicGuid" hidden="" style="display:none;" id="req-guid">25fa86b4-9d02-4778-9a65-edad31e0d383</td>
+                                        <td data-label="Status"><a href="javascript:void(0);"  class="status-icon-verify-loder" title="Verified in blockchain" style="color:#3ba15f;"><i class="fa fa-check"></i></a></td>
+                                    <td data-label="Action" class="clearfix">
+                                            <span class="three-icon">
+                                                <a onclick="onviewer('https://drive.google.com/a/tristonsoft.com/file/d/1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs/preview');" title="Preview">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input id="download" name="DownloadUrl" type="hidden" value="https://veridocglobaldocuments.blob.core.windows.net/veridocglobal/documents/qrpdf/25fa86b4-9d02-4778-9a65-edad31e0d383.pdf">
+                                                </a>
+                                                <a href="/Mainnet/DownloadPdf?googleDriveUrl=https%3A%2F%2Fdrive.google.com%2Fa%2Ftristonsoft.com%2Ffile%2Fd%2F1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs%2Fpreview" title="Download" target="_blank">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+
+                                                
+                                                
+
+
+                                                <a href="javascript:void(0);" onclick="onsendemail('25fa86b4-9d02-4778-9a65-edad31e0d383');" title="Email">
+                                                    <i class="fa fa-envelope"></i>
+                                                </a>
+
+
+
+                                                <a href="/Mainnet/DeleteList?requestpublicguid=25fa86b4-9d02-4778-9a65-edad31e0d383" title="Delete" onclick="return confirm('Are you sure you want to delete?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </span>
+                                    </td>
+                                </tr>
+                                   <tr>
+
+                                    <td data-label="Type"> Employee Verification</td>
+                                    <td data-label="Document Name">Test</td>
+                                    <td data-label="Hash" class="break-content">251F8E37C13D5EF37D78FC3911B4B3026EA098BD81CED8C3EE342BB8E4C27CD9</td>
+                                    <td data-label="Date Created">06/09/2018</td>
+                                    <td data-label="BitcoinId" hidden="" style="display:none;">2</td>
+                                    <td data-label="Sent_tries" hidden="" style="display:none;">1</td>
+                                    <td data-label="RequestDataId" hidden="" style="display:none;" id="req-guid">2</td>
+                                    <td data-label="RequestDataPublicGuid" hidden="" style="display:none;" id="req-guid">25fa86b4-9d02-4778-9a65-edad31e0d383</td>
+                                        <td data-label="Status"><a href="javascript:void(0);"  class="status-icon-verify-loder" title="Verified in blockchain" style="color:#3ba15f;"><i class="fa fa-check"></i></a></td>
+                                    <td data-label="Action" class="clearfix">
+                                            <span class="three-icon">
+                                                <a onclick="onviewer('https://drive.google.com/a/tristonsoft.com/file/d/1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs/preview');" title="Preview">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input id="download" name="DownloadUrl" type="hidden" value="https://veridocglobaldocuments.blob.core.windows.net/veridocglobal/documents/qrpdf/25fa86b4-9d02-4778-9a65-edad31e0d383.pdf">
+                                                </a>
+                                                <a href="/Mainnet/DownloadPdf?googleDriveUrl=https%3A%2F%2Fdrive.google.com%2Fa%2Ftristonsoft.com%2Ffile%2Fd%2F1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs%2Fpreview" title="Download" target="_blank">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+
+                                                
+                                                
+
+
+                                                <a href="javascript:void(0);" onclick="onsendemail('25fa86b4-9d02-4778-9a65-edad31e0d383');" title="Email">
+                                                    <i class="fa fa-envelope"></i>
+                                                </a>
+
+
+
+                                                <a href="/Mainnet/DeleteList?requestpublicguid=25fa86b4-9d02-4778-9a65-edad31e0d383" title="Delete" onclick="return confirm('Are you sure you want to delete?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </span>
+                                    </td>
+                                </tr>
+                                   <tr>
+
+                                    <td data-label="Type"> Employee Verification</td>
+                                    <td data-label="Document Name">Test</td>
+                                    <td data-label="Hash" class="break-content">251F8E37C13D5EF37D78FC3911B4B3026EA098BD81CED8C3EE342BB8E4C27CD9</td>
+                                    <td data-label="Date Created">06/09/2018</td>
+                                    <td data-label="BitcoinId" hidden="" style="display:none;">2</td>
+                                    <td data-label="Sent_tries" hidden="" style="display:none;">1</td>
+                                    <td data-label="RequestDataId" hidden="" style="display:none;" id="req-guid">2</td>
+                                    <td data-label="RequestDataPublicGuid" hidden="" style="display:none;" id="req-guid">25fa86b4-9d02-4778-9a65-edad31e0d383</td>
+                                        <td data-label="Status"><a href="javascript:void(0);"  class="status-icon-verify-loder" title="Verified in blockchain" style="color:#3ba15f;"><i class="fa fa-check"></i></a></td>
+                                    <td data-label="Action" class="clearfix">
+                                            <span class="three-icon">
+                                                <a onclick="onviewer('https://drive.google.com/a/tristonsoft.com/file/d/1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs/preview');" title="Preview">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input id="download" name="DownloadUrl" type="hidden" value="https://veridocglobaldocuments.blob.core.windows.net/veridocglobal/documents/qrpdf/25fa86b4-9d02-4778-9a65-edad31e0d383.pdf">
+                                                </a>
+                                                <a href="/Mainnet/DownloadPdf?googleDriveUrl=https%3A%2F%2Fdrive.google.com%2Fa%2Ftristonsoft.com%2Ffile%2Fd%2F1ykgLG45mdELlojScGBq6P1FMsx8X4Dgs%2Fpreview" title="Download" target="_blank">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+
+                                                
+                                                
+
+
+                                                <a href="javascript:void(0);" onclick="onsendemail('25fa86b4-9d02-4778-9a65-edad31e0d383');" title="Email">
+                                                    <i class="fa fa-envelope"></i>
+                                                </a>
+
+
+
+                                                <a href="/Mainnet/DeleteList?requestpublicguid=25fa86b4-9d02-4778-9a65-edad31e0d383" title="Delete" onclick="return confirm('Are you sure you want to delete?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </span>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </section>
+</div>
+</div>
+
+
+         <div class="footer">
+            <div class="container-fluid">
+               <p class="footer-copyright">&copy; COPYRIGHT ! all right reserved ,veridocglobal</p>
+            </div>
+         </div>
+   
+
+   </body>
+
+ 
+
+
+  
+</html>

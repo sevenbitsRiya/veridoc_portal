@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'article',
     'accounts',
     'apikey',
+    'readExcel',
     'rest_framework',
     'rest_framework_tracking',
 ]
@@ -114,6 +115,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -146,7 +151,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-LOGIN_REDIRECT_URL= '/accounts/home/' 
+LOGIN_REDIRECT_URL= '/accounts/' 
 LOGIN_URL = '/accounts/user_login/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

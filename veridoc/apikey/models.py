@@ -21,22 +21,27 @@ class ApiKeyToken(models.Model):
             self.key = self.generate_key()
             self.secret_key = self.generate_secret_key()
         return super(ApiKeyToken, self).save(*args, **kwargs)
+    
     def refresh(self, *args, **kwargs):
         if self.key:
             self.key = self.generate_key()
             self.secret_key = self.generate_secret_key()
         return super(ApiKeyToken, self).save(*args, **kwargs)
+    
     def generate_key(self):
         return binascii.hexlify(os.urandom(20)).decode()
 
     def generate_secret_key(self):
-        char_set = string.ascii_letters + string.punctuation                    
-        urand = random.SystemRandom()                                           
-        return ''.join([urand.choice(char_set) for _ in range(60)])
+        return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(60))
     
     def __unicode__(self):
         return self.key,self.secret_key
     
+    def get_api_key(self):
+        return self.key
+    
+    def get_sectret_key(self):
+        return self.secret_key
 
     @receiver(post_save, sender=User)
     def create_auth_token(sender, instance=None, created=False, **kwargs):

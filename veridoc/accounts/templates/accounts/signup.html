@@ -1,21 +1,100 @@
-{% extends 'accounts/base.html' %}
+{% extends "accounts/base.html" %}
 
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
+{% load staticfiles %}
+
+{% block content1 %}
+<div class="New-VDG-register-page-main">
+<div class="col-lg-8 col-lg-offset-2">
+
+  <div class="new-sub-content-VDG">
+  
+    <div class="New-button-of-login-pages-VDG">
+      <div class="New-VDG-login-button New-VDG-button-new-design">
+        <a href="{% url 'user_login' %}" class="new-VDG-login-btn ">Login</a>
+      </div>
+      <div class="New-VDG-register-button New-VDG-button-new-design new-VDG-active-btn">
+        <a href="javascript:void(0)" class="new-VDG-login-btn ">Register</a>
+      </div>
+    </div>
+  
+    <div class="New-login-page-design-global new-register-div">
+      <div class="New-login-welcome-text login-account-new-text">Register</div>
+      <div class="New-login-account-text login-account-new-text">Register a new account.</div>
+    </div>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
         {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
+    </ul>
+  {% endif %}
+  <form method="post" action="{% url 'signup' %}" class="New-VDG-account-details-of-form">
+      {% csrf_token %}
+     
+  <div class="row">
+  <div class="col-lg-6 New-VDG-account-form-section-toppadding">
+    <div class="form-group form-sub-main ">
+      <img src="{% static 'images/user.png' %}" class="sub-icon-img "/>
+      <input type="text" class="form-control sub-txt" name="first_name" id="first-name" placeholder="First name">
+      </div>
+      
+      <div class="form-group form-sub-main">
+      <img src="{% static 'images/user.png' %}" class="sub-icon-img "/>
+      <input type="text" class="form-control sub-txt" name="last_name" id="last-name" placeholder="Last name">
+      </div>
+    
+      <div class="form-group form-sub-main">
+      <img src="{% static 'images/mail.png' %}" class="sub-icon-img "/>
+      <input type="email" class="form-control sub-txt" name="username" id="email" placeholder="Email">
+      </div>
+      
+      <div class="form-group form-sub-main">
+      <img src="{% static 'images/lock.png' %}" class="sub-icon-img lock-icon-img "/>
+      <input type="password" class="form-control sub-txt sub-hide-pwd" name="password1" id="pwd" placeholder="Password">
+      </div>
+      
+      <div class="form-group form-sub-main">
+      <img src="{% static 'images/lock.png' %}" class="sub-icon-img lock-icon-img "/>
+      <input type="password" class="form-control sub-txt sub-hide-pwd" name="password2" id="confirm-pwd" placeholder="Confirm password">
+      </div>
+    </div>
+      <div class="col-lg-6">
+      <div class="register-privacy-section">
+        <div class="New-VDG-secure-image">
+          <img src="{% static 'images/secure-icn.png' %}" alt="lock-image">
+        </div>
+      
+        <div class="checkbox form-sub-main-chk">
+        <label><input type="checkbox">I have read and agree to VDG's <span class="chk-blue">Privacy Policy</span> and <span class="chk-blue"> Eula</span>.</label>
+        </div>
+        
+        <div class="login-capcha-image-refresh register-capcha-img-refresh">
+          <div class="login-capcha-image">
+            <img class="img-responsive" id="Captchaimg" src="{% static 'images/captcha.png' %}" title="Captcha">
+          </div>
+
+          <div class="register-capcha-section clearfix">
+            <div class="form-group form-sub-main capta-textbox register-captch-textbox">
+              <input autocomplete="off" autofocus="autofocus" class="form-control sub-txt" id="CaptchaValue" name="CaptchaValue" placeholder="Type the number displayed above" type="text">
+                                            
+            </div>
+            <div class="login-capcha-refresh">
+              <img class="img-responsive" src="{% static 'images/recaptcha.png' %}" >
+            </div>
+          </div>
+        </div>
+        
+        <div class="new-VDG-registeration-btn-for-main">
+        <button type="submit" class="gradient-btn New-VDG-gradient-register-button">Register</button>
+        </div>
+      </div>
+      </div>
+    </div>
   </form>
+            
+       
+</div>
+</div>
+</div>
+{% include 'accounts/footer.html' %}
 {% endblock %}
