@@ -21,21 +21,29 @@ class VDG_M_documentDetailsView(LoggingMixin,APIView):
     def get(self, request, **kwargs):
         if self.request.method == 'GET':
             queryset = ApiKeyToken.objects.all()
+                    
             key = self.request.GET.get('apikey',None)
             payload = self.request.GET.get('payload',None)            
             if key is None:
                 response_data = {}
-                response_data['result'] = 'error'
-                response_data['message'] = 'Some error message'
-                return render(request,json.dumps(response_data)) 
+                response_data['result'] = '1'
+                response_data['message'] = 'Apikey not found!!'
+                return render(request,json.dumps(response_data))     
             else:
-                return_code = 0
-                que = ApiKeyToken.objects.filter(key = key).values_list('secret_key', flat=True).order_by('user_id')
-                sec_key = que[0]
-                response_data = {'sec_key':sec_key}
-                response_data['result'] = 'error'
-                response_data['message'] = 'Some error message'
-                return render(request,json.dumps(response_data),{'sec_key':sec_key})
+                if payload is None:
+                    response_data = {}
+                    response_data['result'] = '1'
+                    response_data['message'] = 'payload not found!!'
+                    return render(request,json.dumps(response_data)) 
+                else:
+                    return_code = 0
+                    que = ApiKeyToken.objects.filter(key = key).values_list('secret_key', flat=True).order_by('user_id')
+                    sec_key = que[0]
+                    response_data = {'sec_key':sec_key}
+                    response_data['result'] = ''
+                    response_data['message'] = ''
+                    return HttpResponse('heyyyyyyyyyyyyy')
+                #return Response(request,json.dumps(response_data),{'sec_key':sec_key})
         else:
             return HttpResponse(request,"You are not authenticated to use this !!!!")               
 
