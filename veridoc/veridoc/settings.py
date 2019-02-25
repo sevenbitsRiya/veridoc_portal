@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'accounts',
     'apikey',
     'readExcel',
+    'verify_doc',
     'rest_framework',
     'rest_framework_tracking',
 ]

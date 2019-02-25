@@ -29,10 +29,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-                  <li ><a href="">Credentials</a></li>
+                  <li ><a href="{% url 'home' %}">Credentials</a></li>
                   <li><a href="">Doc</a></li>
                   <li><a href="">My Documents</a></li>
-                  <li><a href="">Change Password</a></li>
+                  <li><a href="{% url 'change_password' %}">Change Password</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
                   <li><a href="{% url 'user_logout' %}">Logout</a></li>

@@ -25,6 +25,6 @@ urlpatterns = [
     #path('',)
     path('',ac_views.user_login,name='user_login'),
     path('apikey/',include('apikey.urls')),
-    #path('apikey/',include('apikey.urls')),
+    path('doc/',include('verify_doc.urls')),
 
 ]

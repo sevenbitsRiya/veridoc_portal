@@ -30,6 +30,11 @@ class LoginForm(UserCreationForm):
         model = User
         fields = ('username','password')
 
-class PasswordChangeRequestForm(UserCreationForm):
-    pass
+#class PasswordChangeRequestForm(UserCreationForm):
+ #   pass
+    #email = forms.EmailField(max_length=254, help_text = 'Required. Inform a valid email address')
+    #class Meta:
+    #    model = User
+     #   fields = ('email',)
+
 

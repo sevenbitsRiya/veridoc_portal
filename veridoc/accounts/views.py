@@ -12,9 +12,11 @@ from django.contrib.auth import login, authenticate,logout
 from django.urls import reverse
 from django.core.mail import EmailMessage
 from django.conf import settings
-
+from django.shortcuts import render_to_response
 from .forms import SignUpForm,LoginForm
 from .tokens import account_activation_token
+from django.contrib.auth.forms import PasswordChangeForm
+
 
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
@@ -113,27 +115,19 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'accounts/account_activation_invalid.html')
 
-@login_required
 def change_password(request):
     if request.method == 'POST':
-        form = PasswordChangeRequestForm(request.POST)
+        form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            newpassword=form.cleaned_data['newpassword1'],
-            username=request.user.username
-            password=request.user.password
-
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                user.set_password(newpassword)
-                user.save()
-                return HttpResponseRedirect('/reset/success/')
-
-            else:
-                return render(request, 'reset_password.html',{'error':'You have entered wrong old password','form': form})
-
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
         else:
-           return render(request, 'reset_password.html',{'error':'You have entered old password','form': form})
+            messages.error(request, 'Please correct the error below.')
     else:
-        form = PasswordChangeRequestForm()
-    content = RequestContext(request, {'form': form})  
-    return render(request, 'reset_password.html', content,)
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })
+
