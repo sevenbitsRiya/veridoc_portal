@@ -31,10 +31,15 @@ from django.views.generic import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models.query_utils import Q
+from apikey.models import ApiKeyToken
+
 
 @login_required
 def home(request):
-    return render(request, 'apikey/credentials.html')
+    username = request.user.username
+    keys = ApiKeyToken.objects.only('key').get(user__username = username).key
+    sec_keys = ApiKeyToken.objects.only('secret_key').get(user__username = username).secret_key
+    return render(request, 'apikey/credentials.html',{'keys':keys,'sec_keys':sec_keys})
 
 @login_required
 def user_logout(request):

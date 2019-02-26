@@ -22,9 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
     path('api/', include('article.urls')),
-    #path('',)
+  
     path('',ac_views.user_login,name='user_login'),
-    path('apikey/',include('apikey.urls')),
+   
     path('verify_doc/',include('verify_doc.urls')),
 
 ]

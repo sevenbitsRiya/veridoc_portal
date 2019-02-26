@@ -20,7 +20,8 @@ class VDG_M_documentDetails(models.Model):
     ExcelId = models.IntegerField(default=0,null=False)
     
     def __str__(self):
-        return self.ID
+        return self.VGuid
+    
     
     #def getMetadata(self,request):
      #   Meta = request.META.items
