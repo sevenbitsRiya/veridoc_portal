@@ -20,15 +20,15 @@ class VDG_M_documentDetails(models.Model):
     ExcelId = models.IntegerField(default=0,null=False)
     
     def __str__(self):
-        return self.Hash
-
-    def hash_file(Fileurl, block_size=65536):
-        hasher = hashlib.md5()
-        for buf in iter(partial(Fileurl.read, block_size), b''):
-            hasher.update(buf)
-        return hasher.hexdigest()
+        return self.ID
+    
+    #def getMetadata(self,request):
+     #   Meta = request.META.items
+      #  return Meta
     
 
+
+   
 
 
     

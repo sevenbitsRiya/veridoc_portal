@@ -43,6 +43,8 @@
          <!-- /.container-fluid -->
       </nav>
       {% block credential %}
+         {% block data %}
+         {% endblock %}
       {% endblock %}
     </body>
     <script src="{% static 'js/jquery1.min.js' %}"></script>

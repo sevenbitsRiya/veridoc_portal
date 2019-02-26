@@ -23,7 +23,7 @@ def apikey(request):
 
 a = ApiKeyToken.objects.all()
 '''
-def get_api_key(request):
+def key(self,request):
     if request.user.is_authenticated:
         username = request.user.username
         apikey = ApiKeyToken.objects.all()
