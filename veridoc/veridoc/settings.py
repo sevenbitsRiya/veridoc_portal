@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'readExcel',
     'verify_doc',
     'verify_excel',
+    'verify',
     'rest_framework',
     'rest_framework_tracking',
 ]
@@ -94,9 +95,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'sampleDB',
-        'USER': 'sa',
-        'PASSWORD': 'Creative2000',
-        'HOST': '',
+        'USER': 'veridocglobaladmin@x150vg3fqe',
+        'PASSWORD': 'pd%kBoiyOjB9*&GNWAwcX7mqvZAZ%g',
+        'HOST': 'x150vg3fqe.database.windows.net',
         'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
