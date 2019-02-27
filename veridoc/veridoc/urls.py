@@ -26,5 +26,6 @@ urlpatterns = [
     path('',ac_views.user_login,name='user_login'),
    
     path('verify_doc/',include('verify_doc.urls')),
+    path('verify_excel/',include('verify_excel.urls')),
 
 ]

@@ -32,13 +32,17 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models.query_utils import Q
 from apikey.models import ApiKeyToken
-
+from django.contrib.auth.views import PasswordResetView,PasswordResetDoneView,PasswordResetConfirmView,PasswordResetCompleteView
 
 @login_required
 def home(request):
     username = request.user.username
-    keys = ApiKeyToken.objects.only('key').get(user__username = username).key
-    sec_keys = ApiKeyToken.objects.only('secret_key').get(user__username = username).secret_key
+    if request.user.is_staff:
+        keys = None
+        sec_keys = None
+    else:
+        keys = ApiKeyToken.objects.only('key').get(user__username = username).key
+        sec_keys = ApiKeyToken.objects.only('secret_key').get(user__username = username).secret_key
     return render(request, 'apikey/credentials.html',{'keys':keys,'sec_keys':sec_keys})
 
 @login_required
@@ -127,7 +131,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
+            return redirect('home')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
@@ -135,4 +139,6 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', {
         'form': form
     })
+def my_password_reset(request, template_name='accounts/password_reset_form.html'):
+    return PasswordResetView(request, template_name)
 

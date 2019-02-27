@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'apikey',
     'readExcel',
     'verify_doc',
+    'verify_excel',
     'rest_framework',
     'rest_framework_tracking',
 ]
@@ -160,4 +161,4 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT =  os.path.join(BASE_DIR, "staticfiles")
 SITE_ID = 1
-
+APPEND_SLASH = True
