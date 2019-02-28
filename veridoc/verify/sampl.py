@@ -10,8 +10,7 @@ cnxn.autocommit = True
 cursor = cnxn.cursor()
 
 backup = "verify/MyData.txt"
-sql = "BACKUP DATABASE [sampleDB] TO DISK = N'samplDB.bak'"
-GO
+sql = "BACKUP DATABASE [sampleDB] TO DISK = N'samplDB.bak'" GO
 cursor.execute(sql)
 cursor.cancel()
 cnxn.autocommit = False
