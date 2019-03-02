@@ -33,7 +33,7 @@ SECRET_KEY = '5*%6pw#n+xo*$8#d!&s5$3b+ph-v^$=pm)yo9%9ru(mq-*^*40'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['veridocglobaldeveloper.azurewebsites.net']
+ALLOWED_HOSTS = ['veridocglobaldeveloper.azurewebsites.net','127.0.0.1']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'accounts',
     'apikey',
     'readExcel',
+    'readFile',
     'verify_doc',
     'verify_excel',
     'rest_framework',
