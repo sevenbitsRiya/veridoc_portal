@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import url,include
 from accounts import views as ac_views   
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
@@ -26,6 +28,7 @@ urlpatterns = [
    
     path('verify_doc/',include('verify_doc.urls')),
     path('verify_excel/',include('verify_excel.urls')),
-    path('verify/',include('verify.urls')),
 
 ]
+
+urlpatterns += staticfiles_urlpatterns()

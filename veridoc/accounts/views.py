@@ -16,7 +16,10 @@ from django.shortcuts import render_to_response
 from .forms import SignUpForm,LoginForm
 from .tokens import account_activation_token
 from django.contrib.auth.forms import PasswordChangeForm
-
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
 
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
@@ -131,14 +134,11 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('home')
+            return redirect('change_password')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {
+    return render(request, 'accounts/password_reset_form.html', {
         'form': form
     })
-def my_password_reset(request, template_name='accounts/password_reset_form.html'):
-    return PasswordResetView(request, template_name)
-

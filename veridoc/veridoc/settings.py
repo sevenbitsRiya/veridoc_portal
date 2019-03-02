@@ -10,13 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'riya.sevenbits@gmail.com'
-SERVER_EMAIL = 'riya.sevenbits@gmail.com'
+DEFAULT_FROM_EMAIL = 'admin@veridocglobal.com'
+SERVER_EMAIL = 'admin@veridocglobal.com'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'in-v3.mailjet.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'riya.sevenbits@gmail.com'
-EMAIL_HOST_PASSWORD = 'creative2000'
+EMAIL_HOST_USER = '0a4560cc2681cf4af49f508fcae03e49'
+EMAIL_HOST_PASSWORD = 'cab89989b4b4a17a1dc515f944a3a883'
 
 import os
 
@@ -33,7 +33,7 @@ SECRET_KEY = '5*%6pw#n+xo*$8#d!&s5$3b+ph-v^$=pm)yo9%9ru(mq-*^*40'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['veridocglobaldeveloper.azurewebsites.net']
 
 
 # Application definition
@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'readExcel',
     'verify_doc',
     'verify_excel',
-    'verify',
     'rest_framework',
     'rest_framework_tracking',
 ]
@@ -92,19 +91,19 @@ WSGI_APPLICATION = 'veridoc.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'sampleDB',
-        'USER': 'veridocglobaladmin@x150vg3fqe',
-        'PASSWORD': 'pd%kBoiyOjB9*&GNWAwcX7mqvZAZ%g',
-        'HOST': 'x150vg3fqe.database.windows.net',
-        'PORT': '',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'unicode_results': True,
-            'host_is_server': True,
-        },
-    }
+   'default': {
+       'ENGINE': 'sql_server.pyodbc',
+       'NAME': 'stageveridocglobaldevelopment',
+       'USER': 'veridocglobaladmin@x150vg3fqe',
+       'PASSWORD': 'pd%kBoiyOjB9*&GNWAwcX7mqvZAZ%g',
+       'HOST': 'x150vg3fqe.database.windows.net',
+       'PORT': '',
+       'OPTIONS': {
+           'driver': 'ODBC Driver 17 for SQL Server',
+           'unicode_results': True,
+           'host_is_server': True,
+       },
+   }
 }
 
 
@@ -160,6 +159,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-STATIC_ROOT =  os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT =  os.path.join(BASE_DIR, "static_collected")
 SITE_ID = 1
 APPEND_SLASH = True
