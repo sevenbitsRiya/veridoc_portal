@@ -20,14 +20,8 @@ from accounts import views as ac_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/',include('accounts.urls')),
-    path('api/', include('article.urls')),
-  
-    path('',ac_views.user_login,name='user_login'),
    
-    path('verify_doc/',include('verify_doc.urls')),
-    path('verify_excel/',include('verify_excel.urls')),
+   
 
 ]
 
